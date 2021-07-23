@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+    {% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='extended_beauty.css') }}">
+    {% endblock %}
+    {% block content %}
+    <div class="col-md-4 col-md-offset-4">
+
+        <form method="POST" action="/new">
+            <h1>Add New Workout</h1>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class=flashes>
+                {{ messages[0] }}
+            </div>
+            {% endif %}
+            {% endwith %}
+          <div class="form-group">
+            <label for="pushups">Push-Ups</label>
+            <input type="number" class="form-control" id="pushups"
+                   aria-describedby="pushuphelp"
+                   name="pushups" placeholder="Enter Number of Pushups">
+          </div>
+
+            <div class="form-group">
+            <label for="comment">Comment</label>
+            <input type="text" class="form-control" id="comment"
+                   aria-describedby="commenthelp"
+                   name="comment" placeholder="Any Comments">
+          </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add Workout</button>
+        </form>
+
+    </div>
+    {% endblock %}
